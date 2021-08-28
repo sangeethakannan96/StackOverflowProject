@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>testview</title>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <div>
+        <ul class="nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                    <img src="~/Images/user.png" width="20" />
+                    @Session["CurrentUserName"]
+                </a>
+                <div class="dropdown-menu bg-info">
+                    <a class="dropdown-item" href="/account/logout">Logout</a>
+                    <a class="dropdown-item" href="/account/changeprofile">Change Profile</a>
+                    <a class="dropdown-item" href="/account/changepassword">Change Password</a>
+                </div>
+            </li>
+
+        </ul>
+     
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
+</body>
+</html>

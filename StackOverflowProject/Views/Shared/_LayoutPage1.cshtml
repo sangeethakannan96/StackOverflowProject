@@ -1,0 +1,99 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <title>@ViewBag.Title - StackOverflow</title>
+    @Styles.Render("~/Styles/bootstrap")
+    @Styles.Render("~/Styles/site")
+    @Scripts.Render("~/Scripts/bootstrap")
+
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm text-light navbar-light">
+            <a class="navbar-brand" href="#">StackOverflow</a>
+
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavBar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavBar">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/home/index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home/categories">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home/questions">Questions</a>
+                    </li>
+
+                    @if (Session["CurrentUserName"] == null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/account/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/account/register">Register</a>
+                        </li>
+                    }
+
+                    @if (Session["CurrentUserName"] != null)
+                    {
+
+
+                        <li class="nav-item">
+                           
+                                <img src="~/Images/user.png" width="20" />
+                             
+                          
+                        </li>
+                        <li class="nav-item">
+                            @Session["CurrentUserName"]
+                        </li>
+                        <li class="nav-item">
+                            <a class="dropdown-item" href="/account/logout">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="dropdown-item" href="/account/changeprofile">Change Profile</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/account/changepassword">Change Password</a>
+                        </li>
+                           
+                           
+                           
+                        
+                    }
+                </ul>
+            </div>
+
+            <form class="input-group" action="/home/search">
+                <input type="text" class="form-control" style="width:150px" placeholder="Search" name="str">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-success">Search</button>
+                </div>
+           
+            </form>
+        </nav>
+        @RenderBody()
+    </div>
+  
+   
+   
+</body>
+
+</html>
+
+
